@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Contents:</b>
+  <%= @log.contents %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @log.location %>
+</p>
+
+<p>
+  <b>Time:</b>
+  <%= @log.time %>
+</p>
+
+<p>
+  <b>Time in log:</b>
+  <%= @log.time_in_log %>
+</p>
+
+<%= link_to 'Back', logs_path %>
