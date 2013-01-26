@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 
 class LogFile < ActiveRecord::Base
-  attr_accessible :file_name, :type
+  attr_accessible :file_name, :log_type, :pos
 
   has_many :logs
 

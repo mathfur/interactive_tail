@@ -1,0 +1,27 @@
+<h1>Listing log_files</h1>
+
+<table>
+  <tr>
+    <th>File name</th>
+    <th>Type</th>
+    <th>Pos</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @log_files.each do |log_file| %>
+  <tr>
+    <td><%= log_file.file_name %></td>
+    <td><%= log_file.log_type %></td>
+    <td><%= log_file.pos %></td>
+    <td><%= link_to 'Show', log_file %></td>
+    <td><%= link_to 'Edit', edit_log_file_path(log_file) %></td>
+    <td><%= link_to 'Destroy', log_file, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Log file', new_log_file_path %>

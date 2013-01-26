@@ -4,7 +4,7 @@ class CreateLogFiles < ActiveRecord::Migration
   def change
     create_table :log_files do |t|
       t.string :file_name, :null => false
-      t.string :type
+      t.string :log_type
       t.integer :pos, :null => false, :default => 0
 
       t.timestamps

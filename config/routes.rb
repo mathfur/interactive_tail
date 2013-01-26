@@ -1,4 +1,6 @@
 InteractiveTail::Application.routes.draw do
+  resources :log_files
+
   resources :logs
 
   # The priority is based upon order of creation:

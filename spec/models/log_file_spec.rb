@@ -9,7 +9,7 @@ describe LogFile do
     fp.close
     @path = fp.path
 
-    @log_file = LogFile.create(:file_name => @path, :type => 'rails')
+    @log_file = LogFile.create(:file_name => @path, :log_type => 'rails')
   end
 
   specify do

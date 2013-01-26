@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>File name:</b>
+  <%= @log_file.file_name %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @log_file.log_type %>
+</p>
+
+<p>
+  <b>Pos:</b>
+  <%= @log_file.pos %>
+</p>
+
+
+<%= link_to 'Edit', edit_log_file_path(@log_file) %> |
+<%= link_to 'Back', log_files_path %>
