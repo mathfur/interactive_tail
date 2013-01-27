@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "logs/index" do
   before(:each) do
-    assign(:logs, [
+    logs = [
       stub_model(Log,
         :contents => "SELECT * FROM users;",
         :location => "UsersController#index",
@@ -15,7 +15,11 @@ describe "logs/index" do
         :time => Time.now,
         :time_in_log => Time.now
       )
-    ])
+    ]
+    logs.stub!(:current_page).and_return(1)
+    logs.stub!(:total_pages).and_return(1)
+    logs.stub!(:limit_value).and_return(1)
+    assign(:logs, logs)
   end
 
   it "renders a list of logs" do

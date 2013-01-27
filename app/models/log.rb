@@ -13,4 +13,12 @@ class Log < ActiveRecord::Base
   def set_time
     self.time = Time.now
   end
+
+  def tags
+    self.contents.scan(/\[([^]]+)\]/).flatten
+  end
+
+  def contents_after_tags
+    self.contents[/\]\s*([^]]*)$/, 1] || self.contents
+  end
 end

@@ -10,6 +10,16 @@ class LogsController < ApplicationController
     end
   end
 
+  def index_grouped_by_tags
+    @logs_each_tag = Log.all.inject({}) do |h, log|
+      log.tags.each do |tag|
+        h[tag] ||= []
+        h[tag] << log
+      end
+      h
+    end
+  end
+
   def show
     @log = Log.find(params[:id])
 

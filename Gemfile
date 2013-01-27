@@ -39,8 +39,6 @@ gem 'debugger'
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'capybara'
-  gem 'cucumber-rails'
   gem 'rspec'
   gem 'spork'
   gem 'guard'
@@ -49,7 +47,6 @@ group :development, :test do
   gem 'rb-fsevent'
   gem 'growl'
   gem 'factory_girl'
-  gem 'annotate'
 end
 
 gem 'kaminari'

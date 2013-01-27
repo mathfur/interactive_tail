@@ -14,11 +14,11 @@ Spork.prefork do
     config.use_transactional_fixtures = true
     config.infer_base_class_for_anonymous_controllers = false
     config.order = "random"
-    config.include Capybara::DSL
+    #config.include Capybara::DSL
   end
 
-  require 'capybara/rspec'
-  require 'capybara/rails'
+  #require 'capybara/rspec'
+  #require 'capybara/rails'
 
   if Spork.using_spork?
     ActiveSupport::Dependencies.clear
