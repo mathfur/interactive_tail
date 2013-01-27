@@ -51,3 +51,5 @@ group :development, :test do
   gem 'factory_girl'
   gem 'annotate'
 end
+
+gem 'kaminari'

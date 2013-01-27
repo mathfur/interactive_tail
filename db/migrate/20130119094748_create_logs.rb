@@ -5,8 +5,6 @@ class CreateLogs < ActiveRecord::Migration
       t.string :location
       t.datetime :time, :null => false
       t.datetime :time_in_log
-
-      t.timestamps
     end
   end
 end

@@ -2,7 +2,7 @@ class LogsController < ApplicationController
   before_filter :save_tails
 
   def index
-    @logs = Log.all
+    @logs = Log.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

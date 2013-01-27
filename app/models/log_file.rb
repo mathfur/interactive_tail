@@ -39,6 +39,6 @@ class LogFile < ActiveRecord::Base
   end
 
   def self.save_tails
-    LogFile.all.each(&:save!)
+    LogFile.all.each(&:save_tails)
   end
 end
