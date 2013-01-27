@@ -6,6 +6,8 @@ class LogFile < ActiveRecord::Base
   has_many :logs
 
   def save_tails
+    return unless File.exist?(self.file_name)
+
     fp = open(self.file_name, 'r')
     fp.seek(self.start_pos)
 
@@ -22,7 +24,7 @@ class LogFile < ActiveRecord::Base
   end
 
   def limit_of_skip
-    3000
+    30000
   end
 
   # self.pos or forwarded self.pos

@@ -1,4 +1,6 @@
 class LogsController < ApplicationController
+  before_filter :save_tails
+
   def index
     @logs = Log.all
 
@@ -15,5 +17,9 @@ class LogsController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @log }
     end
+  end
+
+  def save_tails
+    LogFile.save_tails
   end
 end
