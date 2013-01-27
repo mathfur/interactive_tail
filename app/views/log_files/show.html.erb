@@ -15,6 +15,11 @@
   <%= @log_file.pos %>
 </p>
 
+<p>
+  <b>Limit of skip:</b>
+  <%= @log_file.limit_of_skip %>
+</p>
+
 
 <%= link_to 'Edit', edit_log_file_path(@log_file) %> |
 <%= link_to 'Back', log_files_path %>

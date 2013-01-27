@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 
 class LogFile < ActiveRecord::Base
-  attr_accessible :file_name, :log_type, :pos
+  attr_accessible :file_name, :log_type, :pos, :limit_of_skip
 
   has_many :logs
 
@@ -21,10 +21,6 @@ class LogFile < ActiveRecord::Base
     end
     self.update_attribute(:pos, fp.pos)
     fp.close
-  end
-
-  def limit_of_skip
-    30000
   end
 
   # self.pos or forwarded self.pos

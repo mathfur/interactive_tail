@@ -6,12 +6,14 @@ describe "log_files/index" do
       stub_model(LogFile,
         :file_name => "File Name",
         :log_type => "Type",
-        :pos => 1
+        :pos => 1,
+        :limit_of_skip => 15
       ),
       stub_model(LogFile,
         :file_name => "File Name",
         :log_type => "Type",
-        :pos => 1
+        :pos => 1,
+        :limit_of_skip => 15
       )
     ])
   end
@@ -22,5 +24,6 @@ describe "log_files/index" do
     assert_select "tr>td", :text => "File Name".to_s, :count => 2
     assert_select "tr>td", :text => "Type".to_s, :count => 2
     assert_select "tr>td", :text => 1.to_s, :count => 2
+    assert_select "tr>td", :text => 15.to_s, :count => 2
   end
 end

@@ -25,7 +25,7 @@ describe LogFile do
   end
 
   specify do
-    LogFile.any_instance.stub(:limit_of_skip).and_return(3)
+    @log_file.update_attribute(:limit_of_skip, 3)
 
     proc do
       open(@path, 'a'){|f| f.puts 'foo'}

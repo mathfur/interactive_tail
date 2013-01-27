@@ -5,6 +5,7 @@
     <th>File name</th>
     <th>Type</th>
     <th>Pos</th>
+    <th>Limit of skip</th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,6 +16,7 @@
     <td><%= log_file.file_name %></td>
     <td><%= log_file.log_type %></td>
     <td><%= log_file.pos %></td>
+    <td><%= log_file.limit_of_skip %></td>
     <td><%= link_to 'Show', log_file %></td>
     <td><%= link_to 'Edit', edit_log_file_path(log_file) %></td>
     <td><%= link_to 'Destroy', log_file, method: :delete, data: { confirm: 'Are you sure?' } %></td>
