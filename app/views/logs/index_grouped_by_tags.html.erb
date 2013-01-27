@@ -1,0 +1,12 @@
+<h1>Listing logs</h1>
+
+<table>
+<% @logs_each_tag.each do |tag, logs| %>
+  <tr>
+  <td>[<%= tag %>]</td>
+  <% logs.each do |log| %>
+      <td><%= log.contents_after_tags %></td>
+  <% end %>
+  </tr>
+<% end %>
+</table>

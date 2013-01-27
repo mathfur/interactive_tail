@@ -36,3 +36,17 @@ gem 'jquery-rails'
 
 # To use debugger
 gem 'debugger'
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'rspec'
+  gem 'spork'
+  gem 'guard'
+  gem 'guard-spork'
+  gem 'guard-rspec'
+  gem 'rb-fsevent'
+  gem 'growl'
+  gem 'factory_girl'
+end
+
+gem 'kaminari'

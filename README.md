@@ -15,8 +15,9 @@ Usage
 ```shell
 $ rails server
 ```
-And then open http://localhost:3000/logs.
-
+* You can add observed log file to http://localhost:3000/log_files.
+* You can show log files at http://localhost:3000/logs or http://localhost:3000/logs/index_grouped_by_tags.
+* If contents of log contain "(insert:/foo/bar.txt:tag1:val2)", then 'tag1:' string at /foo/bar.txt replace to 'tag1:val2'.
 
 License
 ----------
