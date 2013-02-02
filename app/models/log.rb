@@ -31,6 +31,12 @@ class Log < ActiveRecord::Base
   end
   after_save :read_log_to_insert_to_file
 
+  def encode_contents
+    self.contents = self.contents.encode(
+      "UTF-8", "UTF-8", invalid: :replace, undef: :replace, replace: '.')
+  end
+  before_save :encode_contents
+
   # Example:
   #   run
   #     insert_string_to_file("foo/bar.txt", 't01' => 'abc')
