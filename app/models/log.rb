@@ -15,11 +15,11 @@ class Log < ActiveRecord::Base
   end
 
   def tags
-    self.contents.scan(/\[([^\]]+)\]/).flatten
+    self.contents.scan(/\[\[([^\]]+)\]\]/).flatten
   end
 
   def contents_after_tags
-    self.contents[/\]\s*([^\]]*)$/, 1] || self.contents
+    self.contents[/\]\]\s*([^\]]*)$/, 1] || self.contents
   end
 
   # Read '(insert:foo/bar.txt:t01:15)' from contents

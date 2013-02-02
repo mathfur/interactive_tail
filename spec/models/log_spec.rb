@@ -2,17 +2,17 @@ require 'spec_helper'
 
 describe Log do
   describe '#tags' do
-    subject { Log.new(:contents => "[foo][bar] baz") }
+    subject { Log.new(:contents => "[[foo]][[bar]] baz") }
     specify { subject.tags.should == ["foo", "bar"] }
   end
 
   describe '#contents_after_tags' do
-    subject { Log.new(:contents => "[foo][bar] baz") }
+    subject { Log.new(:contents => "[[foo]][[bar]] baz") }
     specify { subject.contents_after_tags.should == "baz" }
   end
 
   describe '#read_log_to_insert_to_file' do
-    subject { Log.new(:contents => "[foo][bar](insert:foo/bar.txt:tag1:val1) baz") }
+    subject { Log.new(:contents => "[[foo]][[bar]](insert:foo/bar.txt:tag1:val1) baz") }
     specify do
       Log.should_receive(:insert_string_to_file).with('foo/bar.txt',{'tag1' => 'val1'})
       subject.read_log_to_insert_to_file
