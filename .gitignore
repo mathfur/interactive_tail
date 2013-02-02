@@ -15,6 +15,7 @@ tmp
 log
 db/schema.rb
 db/*.sqlite3
+tags
 
 # YARD artifacts
 .yardoc

@@ -1,22 +1,16 @@
 <h1>Listing logs</h1>
 
-<table>
+<table class='table table-striped table-bordered table-hover'>
   <tr>
     <th>Contents</th>
-    <th>Location</th>
     <th>Time</th>
-    <th>Time in log</th>
-    <th></th>
-    <th></th>
     <th></th>
   </tr>
 
 <% @logs.each do |log| %>
   <tr>
     <td><%= log.contents %></td>
-    <td><%= log.location %></td>
     <td><%= log.time %></td>
-    <td><%= log.time_in_log %></td>
     <td><%= link_to 'Show', log %></td>
   </tr>
 <% end %>
