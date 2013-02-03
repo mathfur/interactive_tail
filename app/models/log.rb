@@ -15,11 +15,11 @@ class Log < ActiveRecord::Base
   end
 
   def tags
-    self.contents.scan(/\[([^\]]+)\]/).flatten
+    self.contents.scan(/\[\[([^\]]+)\]\]/).flatten
   end
 
   def contents_after_tags
-    self.contents[/\]\s*([^\]]*)$/, 1] || self.contents
+    self.contents[/\]\]\s*([^\]]*)$/, 1] || self.contents
   end
 
   # Read '(insert:foo/bar.txt:t01:15)' from contents
@@ -30,6 +30,12 @@ class Log < ActiveRecord::Base
     end
   end
   after_save :read_log_to_insert_to_file
+
+  def encode_contents
+    self.contents = self.contents.encode(
+      "UTF-8", "UTF-8", invalid: :replace, undef: :replace, replace: '.')
+  end
+  before_save :encode_contents
 
   # Example:
   #   run

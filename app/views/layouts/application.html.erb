@@ -1,14 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang='ja'>
 <head>
   <title>InteractiveTail</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <script type='text/javascript'><%= yield :js_for_specific_view %></script>
+  <style><%= yield :css_for_specific_view %></style>
 </head>
 <body>
 
-<%= yield %>
+<div class="container">
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <ul class="nav pull-left">
+          <a class="brand">Interactive Tail</a>
+          <li class="divider-vertical"></li>
+          <li><%= link_to 'Log files', log_files_path %></li>
+          <li><%= link_to 'Logs', logs_path %></li>
+          <li><%= link_to 'Logs grouped by tags', index_grouped_by_tags_logs_path %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span10">
+      <%= yield %>
+    </div>
+    <div class="span2">
+      <%= content_for?(:side_bar) ? yield(:side_bar) : '' %>
+    </div>
+  </div>
+
+  <div id="footer">
+    <%= content_for?(:footer) ? yield(:footer) : '' %>
+  </div>
+</div>
 
 </body>
 </html>
