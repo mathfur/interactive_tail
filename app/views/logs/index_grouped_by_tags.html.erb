@@ -1,11 +1,79 @@
+<% content_for :js_for_specific_view do %>
+$(function(){
+  $('table#logs').bind('reflect_to_table', function(){
+    $.each(['width', 'height'], function(i, name){
+      var val = $('#display_option_cell_' + name).val();
+      $('table#logs tr td').css(name, val);
+    });
+
+    $('table#logs tr td').each(function(){
+      var regexp = $('#display_option_cell_regexp').val();
+      if(regexp == ''){
+        regexp = '.*';
+      }
+      $('.expose', this).text($('.original', this).text().match(regexp));
+    });
+
+    $('table tr').each(function(){
+      var regexp = $('#display_option_tag_regexp').val();
+      if(regexp == ''){
+        regexp = '.*';
+      }
+
+      $('table#logs tr').each(function(){
+        if((new RegExp(regexp)).test($('.tag', this).text())){
+          $(this).show();
+        }else{
+          $(this).hide();
+        }
+      });
+    });
+
+    return false;
+  });
+
+  $('form#display_options input').change(function(){
+    $('#logs').trigger('reflect_to_table');
+  });
+
+  $('#logs').trigger('reflect_to_table');
+});
+<% end %>
+
+<% content_for :css_for_specific_view do %>
+table tr td .original { display: none; }
+<% end %>
+
 <h1>Listing logs</h1>
 
-<table class='table table-striped table-bordered table-hover'>
+<%= form_tag "/logs/index_grouped_by_tags", method: 'get', class: 'form-horizontal', id: 'display_options' do %>
+  <div class="control-group">
+    <label class="control-label" for="cellWidth">Cell width</label>
+    <div class="controls"><%= text_field_tag "display_option[cell_width]", @display_option[:cell_width], placeholder: "number" %></div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="cellHeight">Cell height</label>
+    <div class="controls"><%= text_field_tag "display_option[cell_height]", @display_option[:cell_height], placeholder: "number" %></div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="tagRegexp">Cell filter</label>
+    <div class="controls"><%= text_field_tag "display_option[cell_regexp]", @display_option[:cell_regexp], placeholder: "regular expression" %></div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="cellRegexp">Tag filter</label>
+    <div class="controls"><%= text_field_tag "display_option[tag_regexp]", @display_option[:tag_regexp], placeholder: "regular expression" %></div>
+  </div>
+<% end %>
+
+<table id='logs' class='table table-striped table-bordered table-hover'>
 <% @logs_each_tag.each do |tag, logs| %>
   <tr>
-  <td>[<%= tag %>]</td>
+  <td class='tag'>[[<%= tag %>]]</td>
   <% logs.each do |log| %>
-      <td><%= log.contents_after_tags %></td>
+      <td>
+        <span class='original'><%= log.contents_after_tags %></span>
+        <span class='expose'></span>
+      </td>
   <% end %>
   </tr>
 <% end %>
