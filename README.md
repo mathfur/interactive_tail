@@ -14,12 +14,20 @@ $ bundle install
 
 Usage
 -----
+1. Run the following command in dir which interactive_tail was installed.
+
 ```shell
 $ rails server
 ```
-* You can add observed log file to http://localhost:3000/log_files.
-* You can show log files at http://localhost:3000/logs or http://localhost:3000/logs/index_grouped_by_tags.
-* If contents of log contain "(insert:/foo/bar.txt:tag1:val2)", then 'tag1:' string at /foo/bar.txt replace to 'tag1:val2'.
+
+2. Open http://localhost:3000/log_files.
+3. Click 'New Log file', then Add observed file.
+4. If you click 'Log' in global menu, you can show log tail.
+5. If you click 'Logs grouped by tags' in global menu, you can show log tail grouped by tag.
+ * A tag is recognized by [[foo]] mark in log contents.
+
+Other
+ * If you insert "(insert:/foo/bar.txt:tag1:val2)" into a observed log contents, then Interactive Tail insert 'tag1:' string at /foo/bar.txt replace to 'tag1:val2'.
 
 License
 ----------
